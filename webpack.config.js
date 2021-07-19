@@ -10,7 +10,8 @@ module.exports = {
     entry: ['./src/index.js', './src/dev.js'],
     output:{
         filename:'main.js',
-        path:resolve(__dirname,"build")
+        path:resolve(__dirname,"build"),
+        publicPath: '/'
     },
     resolve: {
         extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx']
@@ -20,13 +21,15 @@ module.exports = {
             {
                 test: /\.css$/, 
                 use: [
-                    {
-                      loader: MiniCssExtractPlugin.loader,
-                      options: {
-                        publicPath: '../'
-                      },
-                    },
-                    'css-loader',
+                    // {
+                    //   loader: MiniCssExtractPlugin.loader,
+                    //   options: {
+                    //     publicPath: '../'
+                    //   },
+                    // },
+                    'style-loader',
+                    'css-loader', 
+                    'less-loader',
                     {
                         loader: "postcss-loader",
                         options: {
@@ -42,9 +45,7 @@ module.exports = {
             {
                 test:/\.less$/,
                 use:[  
-                    {
-                    loader: MiniCssExtractPlugin.loader,
-                    },
+                    'style-loader',
                     'css-loader', 
                     'less-loader',
                 ]
@@ -119,8 +120,9 @@ module.exports = {
         hot: true, //在devServer中增加hot字段
         contentBase: resolve(__dirname, './src/'),
         publicPath: '/',
-        host: '127.0.0.1',
+        // host: '127.0.0.1',
         port: 3000,
+        historyApiFallback: true,
         stats: {
             colors: true
         }

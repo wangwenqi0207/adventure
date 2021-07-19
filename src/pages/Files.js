@@ -1,11 +1,11 @@
 import React from 'react'
 
-function One(){
+function Files(){
     return(
         <>
-          我是测试组件
+            Files
         </>
     )
 }
 
-export default One
+export default Files

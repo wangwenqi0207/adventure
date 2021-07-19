@@ -1,6 +1,6 @@
 css压缩暂时有点问题
-环境变量配置（配置多环境打包）
 
 redux配置
 路由配置
+npm install @loadable/component -D
 
